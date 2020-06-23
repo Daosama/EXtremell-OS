@@ -1,0 +1,129 @@
+@inputs [TextEntry EGP StreamRadio PlayX EIISocket]:wirelink 
+
+@persist FirstBoot Unlocked LoadCfg Dtop Step1 Step2 Step3 DL I Menu CN CC
+
+@persist [ScreenRes ScreenCenter]:vector2
+@persist [SCenter SRes]:vector2
+
+@persist Ram:table SRam:string UserName:string KeyBorad:string 
+@persist WColor:vector 
+
+@persist U:entity
+
+@persist Bili [BData BInfo BUP]:table PG
+
+@persist CM CMData:table CMAData:table CPG
+
+@persist Bing WorldWide IMG Bings BDs BDIMG
+
+@persist ArrayData:array
+
+@persist Set
+
+@persist Lyrics_Color:vector Lyrics_Size
+@persist BZ NO ID
+@persist [GCD FYD]:table FY NextTimeGC NextTimeFY PreTimeGC PreTimeFY GCC FYC
+@persist LCT OTIME
+
+
+runOnTick(1)
+runOnFile(1)
+runOnHTTP(1)
+runOnLast(1)
+
+KeyBorad=TextEntry["Text",string]
+
+function string nowtime()
+{
+    if(date()["hour",number]<10)
+    {
+        H="0"+date()["hour",number]
+    }
+    else
+    {
+        H=date()["hour",number]+""
+    }
+    if(date()["min",number]<10)
+    {
+        M="0"+date()["min",number]
+    }
+    else
+    {
+        M=date()["min",number]+""
+    }
+    if(date()["sec",number]<10)
+    {
+        S="0"+date()["sec",number]
+    }
+    else
+    {
+        S=date()["sec",number]+""
+    }
+    return H+":"+M+":"+S
+}
+
+function string nowdate()
+{
+    Y=date()["year",number]
+    if(date()["month",number]<10)
+    {
+        M="0"+date()["month",number]
+    }
+    else
+    {
+        M=date()["month",number]+""
+    }
+    if(date()["day",number]<10)
+    {
+        D="0"+date()["day",number]
+    }
+    else
+    {
+        D=date()["day",number]+""
+    }
+    return Y+"/"+M+"/"+D
+}
+
+    function number eii_ec(Ply:entity,ID) 
+    {
+            return inrange(EGP:egpCursor(Ply),EGP:egpPos(ID)-(EGP:egpSize(ID)/2),EGP:egpPos(ID)+(EGP:egpSize(ID)/2))
+    }
+    
+    function number gettime(S:string)
+    {
+        local A = S:gmatch("%d+")
+        local Time=A[1,array][1,string]:toNumber()*60+A[2,array][1,string]:toNumber()+A[3,array][1,string]:toNumber()/1000
+        #local Time= (A[1,string]:toNumber()*60+A[2,string]:toNumber())
+        #print(Time)
+        return Time    
+    }
+    
+    function rdlyc()
+    {
+    
+        EGP:egpText(1551,"AA",SCenter+vec2(0,70)) 
+        EGP:egpAlign(1551,1,1)  
+        EGP:egpColor(1551,Lyrics_Color)
+        EGP:egpSize(1551,Lyrics_Size)
+                
+        EGP:egpText(1552,"AA",SCenter+vec2(0,100)) 
+        EGP:egpAlign(1552,1,1)  
+        EGP:egpColor(1552,Lyrics_Color)
+        EGP:egpSize(1552,Lyrics_Size)
+                
+        EGP:egpText(1553,"AA",SCenter+vec2(0,-130)) 
+        EGP:egpAlign(1553,1,1)  
+        EGP:egpColor(1553,Lyrics_Color)
+        EGP:egpSize(1553,Lyrics_Size+5)
+                
+        EGP:egpText(1554,"AA",SCenter+vec2(0,-90)) 
+        EGP:egpAlign(1554,1,1)  
+        EGP:egpColor(1554,Lyrics_Color)
+        EGP:egpSize(1554,Lyrics_Size-5)
+                        
+        EGP:egpText(1555,"AA",SCenter+vec2(0,-105)) 
+        EGP:egpAlign(1555,1,1)  
+        EGP:egpColor(1555,Lyrics_Color)
+        EGP:egpSize(1555,Lyrics_Size-10)
+        print("Ready")
+    }
