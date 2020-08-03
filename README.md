@@ -1,6 +1,6 @@
 # ExtremeII-OS
 ExtremeII OS by Daogu.
-Ver 1.1.114
+[![Build Status](https://img.shields.io/badge/Expression2-Vaild-brightgreen)][![Build Status](https://img.shields.io/badge/Version-1.1.14-brightgreen)]
 ***
 ## 目前有的功能：
 1. bilibili视频搜索
