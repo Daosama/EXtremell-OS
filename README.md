@@ -22,5 +22,5 @@ Ver 1.1.114
     + 带有播放控件
     - 修复了虫子
 ***
-[![](https://img.shields.io/github/issues/Daosama/EXtremell-OS?style=flat-square)]
-[![](https://img.shields.io/github/stars/Daosama/EXtremell-OS?style=flat-square)]
+![](https://img.shields.io/github/issues/Daosama/EXtremell-OS?style=flat-square)
+![](https://img.shields.io/github/stars/Daosama/EXtremell-OS?style=flat-square)
